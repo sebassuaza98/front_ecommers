@@ -1,0 +1,17 @@
+<h3 class="audit-title">Auditoría</h3> 
+<div class="container">
+  <div class="row">
+    <div *ngFor="let log of auditLogs; let i = index" class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <p class="card-text">
+            <strong>Accion:</strong> {{ log.action }}<br>
+            <strong>Entidad BD:</strong> {{ log.entityName }}<br>
+            <strong>Hecha por Usuario:</strong> {{ log.user }}<br>
+            <strong>Fecha:</strong> {{ log.timestamp | date: 'medium' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

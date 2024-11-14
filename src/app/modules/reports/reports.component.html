@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-5">Reportes</h2>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <h3 class="text-center report-title">Productos más vendidos</h3>
+            <div class="report-section">
+                <div *ngFor="let product of reports.topSellingProducts" class="card custom-card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text"><strong>Price:</strong> {{ product.price | currency }}</p>
+                        <p class="card-text"><strong>Stock:</strong> {{ product.stock }}</p>
+                        <span class="badge" [ngClass]="{'bg-success': product.activo, 'bg-danger': !product.activo}">
+                            {{ product.activo ? 'Active' : 'Inactive' }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <h3 class="text-center report-title">Principales clientes</h3>
+            <div class="report-section">
+                <div *ngFor="let customer of reports.topCustomers" class="card custom-card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ customer.name }}</h5>
+                        <p class="card-text"><strong>Email:</strong> {{ customer.email }}</p>
+                        <span class="badge bg-primary rounded-pill">ID: {{ customer.id }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <h3 class="text-center report-title">Productos activos</h3>
+            <div class="report-section">
+                <div *ngFor="let product of reports.activeProducts" class="card custom-card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text"><strong>Price:</strong> {{ product.price | currency }}</p>
+                        <p class="card-text"><strong>Stock:</strong> {{ product.stock }}</p>
+                        <span class="badge bg-success">Active</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

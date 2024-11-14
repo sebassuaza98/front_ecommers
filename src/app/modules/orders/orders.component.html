@@ -1,0 +1,68 @@
+<div class="container">
+  <h2>Crear Orden</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="createOrder()" #orderForm="ngForm">
+        <div class="form-group">
+          <label for="randomOrder">Orden Aleatoria</label>
+          <input type="checkbox" id="randomOrder" [(ngModel)]="orderRequestDTO.randomOrder" name="randomOrder" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="customerId">ID del Cliente</label>
+          <input type="number" id="customerId" [(ngModel)]="orderRequestDTO.customer.id" name="customerId" class="form-control" required #customerId="ngModel" />
+          <div *ngIf="customerId.invalid && customerId.touched" class="text-danger">
+            El ID del cliente es obligatorio.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="customerName">Nombre del Cliente</label>
+          <input type="text" id="customerName" [(ngModel)]="orderRequestDTO.customer.name" name="customerName" class="form-control" required #customerName="ngModel" />
+          <div *ngIf="customerName.invalid && customerName.touched" class="text-danger">
+            El nombre del cliente es obligatorio.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="customerEmail">Correo del Cliente</label>
+          <input type="email" id="customerEmail" [(ngModel)]="orderRequestDTO.customer.email" name="customerEmail" class="form-control" required #customerEmail="ngModel" />
+          <div *ngIf="customerEmail.invalid && customerEmail.touched" class="text-danger">
+            El correo del cliente es obligatorio.
+          </div>
+        </div>
+
+        <div class="form-group-inline">
+          <div class="form-group">
+            <label for="productId">Producto</label>
+            <input type="number" id="productId" [(ngModel)]="orderRequestDTO.orderItemDTOs[0].productId" name="productId" class="form-control" required #productId="ngModel" />
+            <div *ngIf="productId.invalid && productId.touched" class="text-danger">
+              El ID del producto es obligatorio y debe ser un número.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity">Cantidad</label>
+            <input type="number" id="quantity" [(ngModel)]="orderRequestDTO.orderItemDTOs[0].quantity" name="quantity" class="form-control" required #quantity="ngModel" step="1" min="1" />
+            <div *ngIf="quantity.invalid && quantity.touched" class="text-danger">
+              La cantidad es obligatoria y debe ser mayor a 1.
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="orderForm.invalid">Crear Orden</button>
+      </form>
+    </div>
+    <div class="container2">
+      <div *ngFor="let product of products" class="product-item">
+        <span class="d-block mb-2"> Nombre: {{ product.name }} {{ product.price | currency }}</span>
+        <button class="btn btn-info" (click)="selectProduct(product)">Seleccionar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+/* Estilos generales */
+.container {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center; 
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+}
+
+.form-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.text-danger {
+  font-size: 13px;
+  color: red;
+  margin-top: 5px;
+}
+
+.card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 25px;
+}
+
+.btn {
+  padding: 6% 4px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.alert-danger {
+  margin-top: 15px;
+  font-size: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.btn.w-50 {
+  width: 50%; 
+  margin: 0 auto; 
+  display: block;
+}

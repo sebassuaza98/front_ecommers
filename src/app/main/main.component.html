@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="fondos-header-container">
+    <app-header></app-header>
+  </div>
+
+  <div class="principal-container">
+    <div class="fondos-inner-container">
+      
+    </div>
+
+    <div class="menus">
+      <h3>Menú :</h3>
+      <button (click)="createProducts()" class="btn">Productos</button>
+      <button (click)="viewProducts()" class="btn">Inventario</button>
+      <button (click)="createOrders()" class="btn">Ordenes</button>
+      <button (click)="viewReports()" class="btn">Reportes</button>
+      <button (click)="viewAudits()" class="btn">Auditoria</button>
+      <button (click)="viewUsers()" class="btn">Usuarios</button>
+    </div>
+
+    <div class="content-container">
+      <div *ngIf="currentView === 'createProduct'">
+        <app-create-product></app-create-product>
+      </div>
+      <div class="content-container">
+        <div *ngIf="currentView === 'viewProduct'">
+          <app-products></app-products>
+      </div>
+      <div class="content-container">
+        <div *ngIf="currentView === 'createOrder'">
+          <app-orders></app-orders>
+      </div>
+      <div class="content-container">
+        <div *ngIf="currentView === 'viewReport'">
+          <app-reports></app-reports>
+      </div>
+      <div class="content-container">
+        <div *ngIf="currentView === 'viewAudit'">
+          <app-audit></app-audit>
+      </div>
+      <div class="content-container">
+        <div *ngIf="currentView === 'viewUser'">
+          <app-user-list></app-user-list>
+      </div>
+    </div>
+  </div>
+</div>

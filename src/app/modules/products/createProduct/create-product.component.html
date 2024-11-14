@@ -1,0 +1,72 @@
+<div class="form-container">
+  <h2>Agregar Producto</h2>
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-control"
+        [(ngModel)]="product.name"
+        required
+        #name="ngModel"
+      />
+      <div *ngIf="name.invalid && name.touched" class="error-message">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        id="description"
+        name="description"
+        class="form-control"
+        [(ngModel)]="product.description"
+        required
+        #description="ngModel"
+      />
+      <div *ngIf="description.invalid && description.touched" class="error-message">
+        La descripción es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        class="form-control"
+        [(ngModel)]="product.price"
+        required
+        min="0"
+        #price="ngModel"
+      />
+      <div *ngIf="price.invalid && price.touched" class="error-message">
+        El precio es obligatorio y debe ser un número positivo.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <input
+        type="number"
+        id="stock"
+        name="stock"
+        class="form-control"
+        [(ngModel)]="product.stock"
+        required
+        min="0"
+        #stock="ngModel"
+      />
+      <div *ngIf="stock.invalid && stock.touched" class="error-message">
+        El stock es obligatorio y debe ser un número positivo.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Create Product</button>
+  </form>
+</div>

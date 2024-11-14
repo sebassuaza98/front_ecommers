@@ -1,0 +1,80 @@
+<div class="container">
+  <h3 class="text-center mb-5">Registrar Usuario</h3>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg p-4 rounded bg-light">
+        <div class="card-body">
+          <form (ngSubmit)="registerUser(registerForm)" #registerForm="ngForm">
+            
+            <div class="form-group">
+              <label for="id" class="form-label">ID</label>
+              <input 
+                type="number" 
+                id="id" 
+                [(ngModel)]="user.id" 
+                name="id" 
+                class="form-control" 
+                required 
+                min="2"
+                #id="ngModel"
+              />
+              <div *ngIf="id.invalid && id.touched" class="text-danger small">
+                <div *ngIf="id.errors?.['required']">El ID es obligatorio.</div>
+                <div *ngIf="id.errors?.['min']">El ID debe ser mayor a 1.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name" class="form-label">Nombre</label>
+              <input 
+                type="text" 
+                id="name" 
+                [(ngModel)]="user.name" 
+                name="name" 
+                class="form-control" 
+                required 
+                #name="ngModel"
+              />
+              <div *ngIf="name.invalid && name.touched" class="text-danger small">
+                El nombre es obligatorio.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="form-label">Contraseña</label>
+              <input 
+                type="password" 
+                id="password" 
+                [(ngModel)]="user.password" 
+                name="password" 
+                class="form-control" 
+                required 
+                #password="ngModel"
+              />
+              <div *ngIf="password.invalid && password.touched" class="text-danger small">
+                La contraseña es obligatoria.
+              </div>
+            </div>
+
+            <button 
+              type="submit" 
+              class="btn btn-primary w-50 mt-4 mx-auto d-block" 
+              [disabled]="registerForm.invalid"
+            >
+              Registrar
+            </button>
+          </form>
+
+          <div class="mt-3 text-center">
+            <p>¿Regresar al Login? <a routerLink="/viewComponent">Regresar</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
